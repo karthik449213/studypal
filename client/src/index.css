@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* StudyPal custom colors */
+  --studypal-green: hsl(82, 95%, 40%);
+  --studypal-blue: hsl(199, 92%, 56%);
+  --studypal-orange: hsl(36, 100%, 50%);
+  --studypal-red: hsl(0, 100%, 64%);
+  --studypal-purple: hsl(270, 100%, 76%);
+  --studypal-dark: hsl(240, 33%, 9%);
+  --studypal-dark-card: hsl(240, 21%, 15%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .studypal-green {
+    color: var(--studypal-green);
+  }
+  
+  .bg-studypal-green {
+    background-color: var(--studypal-green);
+  }
+  
+  .studypal-blue {
+    color: var(--studypal-blue);
+  }
+  
+  .bg-studypal-blue {
+    background-color: var(--studypal-blue);
+  }
+  
+  .studypal-orange {
+    color: var(--studypal-orange);
+  }
+  
+  .bg-studypal-orange {
+    background-color: var(--studypal-orange);
+  }
+  
+  .studypal-red {
+    color: var(--studypal-red);
+  }
+  
+  .bg-studypal-red {
+    background-color: var(--studypal-red);
+  }
+  
+  .studypal-purple {
+    color: var(--studypal-purple);
+  }
+  
+  .bg-studypal-purple {
+    background-color: var(--studypal-purple);
+  }
+  
+  .studypal-dark {
+    color: var(--studypal-dark);
+  }
+  
+  .bg-studypal-dark {
+    background-color: var(--studypal-dark);
+  }
+  
+  .studypal-dark-card {
+    color: var(--studypal-dark-card);
+  }
+  
+  .bg-studypal-dark-card {
+    background-color: var(--studypal-dark-card);
+  }
+}
+
+/* Custom animations */
+@keyframes flip {
+  0% { transform: rotateY(0); }
+  50% { transform: rotateY(-90deg); }
+  100% { transform: rotateY(0); }
+}
+
+@keyframes bounce-subtle {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--studypal-green) 0%, var(--studypal-blue) 100%);
+}
+
+.dark-gradient-bg {
+  background: linear-gradient(135deg, var(--studypal-dark) 0%, var(--studypal-dark-card) 100%);
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 1s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
